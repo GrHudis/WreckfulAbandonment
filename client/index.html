@@ -1,0 +1,51 @@
+ 
+ <template name="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand">Home</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+         <li>
+            <a href="slides">Slide Show</a>
+          </li>		
+          <li>
+            <a href="wall">Graffiti Draw</a>
+          </li>
+			<li>
+            <a href="forum">Forum</a>
+          </li>		
+			<li>
+            <a href="about">About</a>
+          </li>			  
+        </ul>
+      </div>
+	<div class="navbar-text navbar-right">
+    {{> loginButtons}}
+	</div>	  
+    </div>
+  </div>
+  </template>
+ 
+  
+ <template name="home">
+ {{> header}}
+  <h1>Welcome to WreckfulAbandon!</h1>
+    <img src="Tracks.jpeg" alt="Girl running from train tracks">
+ </template>
+ 
+ <template name="slides">
+  {{> header}}
+  <h1>Slide Show</h1>
+ </template>
+ 
+  <template name="forum">
+  {{> header}}
+  <h1>Forum</h1>
+ </template>
+ 
+   <template name="about">
+  {{> header}}
+  <h1>About</h1>
+ </template>

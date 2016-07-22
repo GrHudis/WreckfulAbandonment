@@ -1,0 +1,85 @@
+<template name="wall">
+	 <div class="container"> 
+		  {{> header}}
+		  <p>Works on Safari, Chrome & IE, Firefox can see but cannot draw</p>
+	 </div> 
+ 
+	  {{> canvas}}
+	  
+	  <div class="container bakgrnd">
+		<br>
+	  		<form class="js-submit-form form-inline" role="form">
+			<br>
+			<div class="row">
+				<div class="col-sm-3 ctitle">
+					<strong>Canvas Title:</strong><input class="input" type="text" name="title" value={{ doctitle }}>
+				</div>
+				<div class="col-sm-6">
+					<strong>Canvas Action:</strong>
+					 <label class="radio-inline"><input type = "radio" name = "rbTitle" value = "new"  checked="checked">New</label>
+					 <label class="radio-inline"><input type = "radio" name = "rbTitle" value = "clone">Copy {{ doctitle }}</label>
+					 <label class="radio-inline"><input type = "radio" name = "rbTitle" value = "reload">Load</label>
+				</div>
+				<div class="col-sm-3">
+					<strong>Brush Shape...:</strong>
+					 <label class="radio-inline"><input type = "radio" name = "rbShape" value = "line"  checked="checked">Line</label>
+					 <label class="radio-inline"><input type = "radio" name = "rbShape" value = "circle">Circle</label>
+				</div>
+			</div>	
+			<div class="row sbtn">
+				<div class="col-sm-4">
+					<button class="btn btn-primary"><strong>Submit</strong></button>
+				</div>	
+			</div>
+		<br>			
+		</form>
+		
+		<div class="row">
+			<br>
+			<div class="col-sm-8">
+			  <strong>Brush Color:</strong>
+			  <button class="btn btnColor01"></button>
+			  <button class="btn btnColor02"></button>
+			  <button class="btn btnColor03"></button>
+			  <button class="btn btnColor04"></button>
+			  <button class="btn btnColor04"></button>
+			  <button class="btn btnColor06"></button>
+			  <button class="btn btnColor07"></button>
+			  <button class="btn btnColor08"></button>
+			  <button class="btn btnColor09"></button>
+			  <button class="btn btnColor10"></button>
+			  <button class="btn btnColor11"></button>
+			  <button class="btn btnColor12"></button>
+			  <button class="btn btnColor13"></button>
+			  <button class="btn btnColor14"></button>
+			  <button class="btn btnColor15"></button>
+			  <button class="btn btnColor16"></button>  
+			  <button class="btn btnColor17"></button> 
+			</div>	
+			<div class="col-sm-2">
+				<button class="btn btn-warning clear"><strong>Clear {{ doctitle }} Canvas</strong></button>
+			</div>
+			<div class="col-sm-2">
+				<button class="btn btn-danger delete"><strong>Delete ALL Canvas's</strong></button>
+			</div>
+		</div>
+
+		<div class="row">
+		<br>		
+			<div class="col-sm-6">	
+				<strong>Line Thickness</strong><div id="slideThickness"></div>	
+			</div>	
+			<div class="col-sm-6">	
+				<strong>Circle Radius</strong><div id="slideRadius"></div>
+			</div>			
+		</div>	
+		<br> 
+		
+  </div>	
+</template>
+
+<template name="canvas">
+     <div id='canvas'></div>
+</template>
+ 
+ 	 
