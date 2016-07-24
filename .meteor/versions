@@ -66,7 +66,6 @@ modules@0.6.5
 modules-runtime@0.6.5
 mongo@1.1.9_1
 mongo-id@1.0.5
-mrt:bootstrap-3@0.3.8
 npm-bcrypt@0.8.6_3
 npm-mongo@1.4.45
 observe-sequence@1.0.12
@@ -90,6 +89,7 @@ standard-minifier-js@1.0.8
 templating@1.1.14
 templating-tools@1.0.4
 tracker@1.0.15
+twbs:bootstrap@3.3.6
 ui@1.0.11
 underscore@1.0.9
 url@1.0.10

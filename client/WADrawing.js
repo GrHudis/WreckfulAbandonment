@@ -14,7 +14,15 @@ Canvas = function () {
   self.clear = function() {
     d3.select('svg').remove();
     createSvg();
+	console.log("Drawing clear");
   };
+  
+  
+    self.init = function() {
+    createSvg();
+	console.log("Drawing init");
+  };
+
 
   self.draw = function(data, shape) {
     if (data.length < 1) {

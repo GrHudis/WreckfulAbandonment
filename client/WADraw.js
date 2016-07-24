@@ -1,4 +1,3 @@
-Meteor.subscribe('Meteor.users')
 Meteor.subscribe('pointsCollection')
 
 var canvas;
@@ -10,33 +9,32 @@ var thickness   =1;
 var strokeColor = "black";
 var radius=1;
 var shape = 1;
-var canvasCleared = 0;
+var canvasCreated = 0;
+
 
   Template.wall.onCreated(function() {
-	this.autorun(function() {
-		Session.set('title',  'public');
-		
-		var title = Session.get('title');
-		
-		var data  = points.find({}).fetch({"title":title});
+	Session.set('title',  'public');
+	console.log("Title has been set to " + Session.get('title'));
 	
-        if (!canvas) {	
-		 canvas = new Canvas();
-		}
-		
-		if (canvas) {
-			canvas.draw(data, shape);
-		} 
-			
-	}) 		  
-  }); 
+    if (!canvas) {	
+ 	 canvas = new Canvas(); 
+	}	
+
+  this.autorun( function() {
+
+	var title = Session.get('title');
+    var data  = points.find({}).fetch({"title":title});
+
+    if (canvas) {
+      canvas.draw(data, shape);
+    }
+  });
+});
+ 
 
   Template.wall.onRendered(function() {
-	if (!canvasCleared) {
-		canvas.clear();
-		canvasCleared = 1;
-	}	
-	
+	console.log("Wall rendered");
+ 	
 	
 	if (!this.$('#slideThickness').data('uiSlideThickness')) {
 		$("#slideThickness").slider({ 

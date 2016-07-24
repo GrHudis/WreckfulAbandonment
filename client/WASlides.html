@@ -1,0 +1,41 @@
+ <template name="slides">
+  {{> header}}
+  <h1>Slide Show</h1>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+	  <div class="carousel-inner" roll="listbox">
+			<div class="item active">
+				<img src="Tracks.jpeg" alt="New Jersey Transit Track Lincoln Park">
+				<div class="carousel-caption">
+					<h3 class="imcat">Site Theme Photo</h3>
+					<p class="imcat">New Jersey Transit, Lincoln Park New Jersey</p>
+				</div>
+			</div>
+			{{#each images}}
+			{{> slide}}
+			{{/each}}
+	  </div>
+	  
+  	  <!-- Carousel nav -->
+	  <a class="carousel-control left"  href="#myCarousel" data-slide="prev" role="button">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	  </a>
+	  <a class="carousel-control right" href="#myCarousel" data-slide="next" role="button">
+	  	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	  </a>	  
+	  
+</div>
+ </template>
+ 
+  
+ <template name="slide">
+	<div class="item">
+		<img src="{{name}}" alt="{{description}}">
+		<div class="carousel-caption">
+			<h3 class="imcat">{{category}}</h3>
+			<p class="imcat">{{description}}, {{location}}</p>
+		</div>
+	</div>
+</template>
