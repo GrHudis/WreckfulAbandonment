@@ -1,0 +1,13 @@
+<template name="available_user">
+	<div class="col-md-2">
+		<div class="user_avatar">
+				<div class="bg-success">
+					{{#if getUserstatus _id}}
+						{{getUsername _id}} is Available
+					{{else}}
+						{{getUsername _id}} is OFFLINE
+					{{/if}}
+				</div>
+		</div>
+	</div>
+</template>

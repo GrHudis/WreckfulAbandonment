@@ -1,0 +1,32 @@
+<!-- template that displays individual comment entries -->
+<template name="comment_item">
+	<li class="spacedown">
+		<div class="container">
+			<div class="row">
+				<p>Posted by {{poster}} on {{postdate}}</p>
+				<p>{{posting}}</p>
+			</div>
+		</div>
+	</li>
+</template>
+
+<template name="comment_form">
+	<div class="container">
+			<p>{{ url }}</p>
+			<p>{{ title }}</p>
+			<p>{{ description }}</p>
+	</div>
+	<a class="btn btn-default js-toggle-comment-form" href="#">
+  		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	</a>
+	<div id="comment_form" class="hidden_div">  
+		<form class="js-save-comment-form">
+	
+		  <div class="form-group">
+		    <label for="comment">Comment</label>
+		    <input type="text" class="form-control" id="post" placeholder="Here is what i feel about this web site ..." required>
+		   </div>
+		  <button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+</template>

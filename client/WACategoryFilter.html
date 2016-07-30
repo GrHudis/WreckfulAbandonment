@@ -1,0 +1,23 @@
+<template name="categories">
+	<div class="container">
+		<a class="btn btn-default js-toggle-category-filter-form" href="#">
+			<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+		{{myCategory}}</a>
+	</div>
+	<div id="category-filter-form" class="hidden_div">
+		<form class="js-category-filter-form">
+		<div class="form-group">
+		  <label for="sel1">Select category:</label>
+		  <select class="form-control" id="category">
+		  	<option>All</option>
+			<option>Graffiti</option>
+			<option>Railroad</option>
+			<option>Mill</option>
+			<option>Canal</option>
+		  </select>
+		</div>
+		 <button type="submit" class="btn btn-default">Set Filter</button>
+		 <button type="reset" class="btn">Reset Filter</button>
+		</form>
+	</div>
+</template>
