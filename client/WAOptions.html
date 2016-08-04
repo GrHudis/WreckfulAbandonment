@@ -1,0 +1,48 @@
+<template name="options_form">
+	  <div class="container bakgrnd">
+		<br>
+	  		<form class="js-options-form form-inline" role="form">
+			<br>
+			<div class="row">
+				<div class="col-sm-12">
+					<strong>Canvas Action:</strong>
+					
+					 <label class="radio-inline"><input type="radio" name= "rbTitle" value="new" checked="checked">New
+					 <span class="glyphicon glyphicon-new-window"></span></label>
+					 
+					 <label class="radio-inline"><input type="radio" name="rbTitle" value="reload">Load
+					 <span class="glyphicon glyphicon-open"></span></label>
+					 
+					 <label class="radio-inline"><input type="radio" name="rbTitle" value="clone">Copy {{doctitle}}
+					 <span class="glyphicon glyphicon-transfer"></span></label>					 
+				</div>
+			</div>
+			
+			<br>	
+			<div class="row">
+				<div class="col-sm-3 ctitle">
+					<div class="form-group">
+						  <label for="sel1"><strong>Select canvas:</strong></label>
+						  <select class="form-control" id="oldTitle">
+								{{#each canvasSVGs}}
+									{{>canvas_item}}
+								{{/each}}
+						 </select>
+					</div>
+				</div>	
+				<div class="col-sm-3 ctitle">
+					<strong>New Title:</strong><input class="input js-canvas-new-title" type="text" name="newTitle" value=" ">
+				</div>		
+				<div class="col-sm-2">
+					<button class="btn btn-primary sbtn"><strong>Submit</strong></button>
+				</div>
+				<div class="col-sm-2">
+					<button id="btn-delete" class="btn btn-danger delete"><strong>Delete {{doctitle}}</strong></button>
+				</div>					
+			</div>
+		</form>
+		
+
+		
+  </div>	
+</template> 
