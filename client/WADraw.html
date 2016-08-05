@@ -1,48 +1,46 @@
 <template name="wall">
-	 <div class="container"> 
-		  {{> header}}
-		  <p>Works on Safari, Chrome & IE, Firefox can see but cannot draw</p>
-	 </div> 
+	<p>Graffiti Canvas for Document: {{doctitle}}</p>
+	<p>Works on Safari, Chrome & IE, Firefox can see but cannot draw</p>
  
-	  {{> canvas}}
+	{{> canvas}}
 	  
 	  <div class="container bakgrnd">
 		<br>
-	  		<form class="js-submit-form form-inline" role="form">
-			<br>
+	  		<form class="js-brushes-form form-inline" role="form">
+		
 			<div class="row">
-				<div class="col-sm-3 ctitle">
-					<strong>Canvas Title:</strong><input class="input" type="text" name="title" value={{ doctitle }}>
-				</div>
 				<div class="col-sm-6">
-					<strong>Canvas Action:</strong>
-					 <label class="radio-inline"><input type = "radio" name = "rbTitle" value = "new"  checked="checked">New</label>
-					 <label class="radio-inline"><input type = "radio" name = "rbTitle" value = "clone">Copy {{ doctitle }}</label>
-					 <label class="radio-inline"><input type = "radio" name = "rbTitle" value = "reload">Load</label>
+					<strong>Brush Shape...:</strong>
+					 <label class="radio-inline"><input type="radio" name="rbShape" value="line"  checked="checked">Line
+					  <span class="glyphicon glyphicon-minus"></span></label>
+					  
+					 <label class="radio-inline"><input type="radio" name="rbShape" value="circle">Circle
+					  <span class="glyphicon glyphicon-adjust"></span></label>
+					  
+					 <label class="radio-inline"><input type="radio" name="rbShape" value="rectangle">Rectangle
+					  <span class="glyphicon glyphicon-stop"></span></label>
+					  
+					 <label class="radio-inline"><input type="radio" name="rbShape" value="ellipse">Ellipse
+					  <span class="glyphicon glyphicon-eye-open"></span></label>					  
+				</div>	  
+				<div class="col-sm-3">
+					<button class="btn btn-primary"><strong>Apply Brush Changes</strong></button>
 				</div>
 				<div class="col-sm-3">
-					<strong>Brush Shape...:</strong>
-					 <label class="radio-inline"><input type = "radio" name = "rbShape" value = "line"  checked="checked">Line</label>
-					 <label class="radio-inline"><input type = "radio" name = "rbShape" value = "circle">Circle</label>
-				</div>
-			</div>	
-			<div class="row sbtn">
-				<div class="col-sm-4">
-					<button class="btn btn-primary"><strong>Submit</strong></button>
-				</div>	
+					<button class="btn btn-warning clear"><strong>Clear {{ doctitle }}</strong></button>
+				</div>				
 			</div>
-		<br>			
 		</form>
 		
 		<div class="row">
 			<br>
-			<div class="col-sm-8">
-			  <strong>Brush Color:</strong>
+			<div class="col-sm-12">
+			  <strong>Color:</strong>
 			  <button class="btn btnColor01"></button>
 			  <button class="btn btnColor02"></button>
 			  <button class="btn btnColor03"></button>
 			  <button class="btn btnColor04"></button>
-			  <button class="btn btnColor04"></button>
+			  <button class="btn btnColor05"></button>
 			  <button class="btn btnColor06"></button>
 			  <button class="btn btnColor07"></button>
 			  <button class="btn btnColor08"></button>
@@ -54,23 +52,27 @@
 			  <button class="btn btnColor14"></button>
 			  <button class="btn btnColor15"></button>
 			  <button class="btn btnColor16"></button>  
-			  <button class="btn btnColor17"></button> 
+			  <button class="btn btnColor18"></button> 
+			  <button class="btn btnColor19"></button> 
+			  <button class="btn btnColor20"></button> 
+			  <button class="btn btnColor21"></button> 
+			  <button class="btn btnColor22"></button> 
+			  <button class="btn btnColor23"></button>
+			  <button class="btn btnColor24"></button> 			  
+			  
 			</div>	
-			<div class="col-sm-2">
-				<button class="btn btn-warning clear"><strong>Clear {{ doctitle }} Canvas</strong></button>
-			</div>
-			<div class="col-sm-2">
-				<button class="btn btn-danger delete"><strong>Delete ALL Canvas's</strong></button>
-			</div>
 		</div>
 
 		<div class="row">
 		<br>		
-			<div class="col-sm-6">	
+			<div class="col-sm-4">	
 				<strong>Line Thickness</strong><div id="slideThickness"></div>	
 			</div>	
-			<div class="col-sm-6">	
-				<strong>Circle Radius</strong><div id="slideRadius"></div>
+			<div class="col-sm-4">	
+				<strong>Radius/Width</strong><div id="slideRadius"></div>
+			</div>	
+			<div class="col-sm-4">	
+				<strong>Height</strong><div id="slideHeight"></div>
 			</div>			
 		</div>	
 		<br> 
@@ -78,8 +80,10 @@
   </div>	
 </template>
 
+<template name="canvas_item">
+	<option>{{title}}</option>
+</template>	
+
 <template name="canvas">
      <div id='canvas'></div>
-</template>
- 
- 	 
+</template>	 

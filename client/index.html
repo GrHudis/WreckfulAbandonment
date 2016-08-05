@@ -1,3 +1,10 @@
+<template name="masterLayout">
+	{{>header}}
+	<div class="container">
+		{{> yield}}
+	</div>
+</template>
+    
   <template name="header">
   <div class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -7,40 +14,71 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-left">
          <li>
-            <a href="slides">Slide Show</a>
+            <a href="/options">Options</a>
+          </li>		
+         <li>
+            <a href="/slides">Slide Show</a>
           </li>		
           <li>
-            <a href="wall">Graffiti Draw</a>
+            <a href="/wall">Graffiti Draw</a>
           </li>
 			<li>
-            <a href="forum">Forum</a>
+            <a href="/forum">Forum</a>
           </li>		
 			<li>
-            <a href="about">About</a>
+            <a href="/users">Collabotative Partners</a>
+          </li>			  
+			<li>
+            <a href="/about">About</a>
           </li>			  
         </ul>
       </div>
 	<div class="navbar-text navbar-right">
-    {{> loginButtons}}
+		{{> loginButtons}}
 	</div>	  
     </div>
   </div>
   </template>
- 
   
  <template name="home">
- {{> header}}
   <h1>Welcome to WreckfulAbandon!</h1>
     <img src="Tracks.jpeg" alt="Girl running from train tracks">
  </template>
  
-  <template name="forum">
-  {{> header}}
-  <h1>Forum</h1>
+   <template name="options">
+   <h1>Options</h1>
+    Slide Show & Forum Category:{{> categories}}
+	{{> options_form}}
  </template>
  
+  <template name="forum">
+   <h1>Web Sites Forum</h1>
+	{{> website_form}}
+	{{> website_list}}
+ </template>
+ 
+ <template name="comments">
+   <h1>Web Sites Forum</h1>
+   <h2>Comments</h2>
+		{{>comment_form}}
+	<ol>
+		{{#each comments}}
+			{{>comment_item}}
+		{{/each}}
+	</ol>
+</template>
+
+<template name="users">
+	<h1>Who can I collaborate with ?</h1>
+	<div class="row">
+	{{#each users}}
+		{{> available_user}}
+	{{/each}}
+</div>
+</template>
+ 
+ 
    <template name="about">
-  {{> header}}
   <h1>About</h1>
   <p>This site is inspired by the adentures of the hiking club <a href="http://www.metrotrails.org/Metrotrails/Home.html">Metrotrails</a></p> 
   <p>Slide show is powered by Twitter <a href="http://getbootstrap.com/">Bootstrap</a></p>

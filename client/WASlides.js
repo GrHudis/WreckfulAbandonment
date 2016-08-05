@@ -2,7 +2,12 @@
   
    Template.slides.helpers({
     images:function(){
-		return WAImages.find({}); 
+		var cat = Session.get("myCategory");
+		if ((!cat) || (cat == "All")) {
+			return WAImages.find({}); 
+		} else {
+			return WAImages.find({category:cat}); 
+		}	
     }	
   })
   

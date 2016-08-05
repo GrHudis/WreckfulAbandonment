@@ -1,18 +1,12 @@
 .ctitle {
-	margin-left: 20px;;	
-}
-
-.sbtn {
 	margin-left: 20px;
-	margin-top:  20px;;	
+	margin-top:  20px;
+	margin-bottom:  20px;	
 }
 
 .bakgrnd {
-	background-color: grey;	
-}	
-
-.js-submit-form {
-	background-color: lightgrey;	
+	background-color: lightgrey;
+	padding:10px;	
 }	
 
 .btnColor01{
@@ -21,81 +15,117 @@
 }
 
 .btnColor02{
-	background-color: blue;
+	background-color: darkblue;
 
 }
 
 .btnColor03{
-	background-color: cyan;
+	background-color: darkslateblue;
 
 }
 
 .btnColor04{
-	background-color: darkgreen;
+	background-color: blue;
 
 }
 
 .btnColor05{
-	background-color: green;
+	background-color: powderblue;
 
 }
 
 .btnColor06{
-	background-color: fuchsia;
+	background-color: cadetblue;
 
 }
 
 .btnColor07{
-	background-color: violet;
-
-}
-
-.btnColor08{
-	background-color: firebrick;
-
-}
-
-.btnColor09{
-	background-color: red;
-
-}
-
-.btnColor10{
-	background-color: orange;
-
-}
-
-.btnColor11{
-	background-color: goldenrod;
-
-}
-
-.btnColor12{
-	background-color: deeppink;
-
-}
-
-.btnColor13{
-	background-color: olive;
-
-}
-
-.btnColor14{
-	background-color: saddlebrown;
-
-}
-
-.btnColor15{
-	background-color: slategray;
-
-}
-
-.btnColor16{
 	background-color: teal;
 
 }
 
-.btnColor17{
-	background-color: white;
+.btnColor08{
+	background-color: cyan;
 
+}
+
+.btnColor09{
+	background-color: darkgreen;
+
+}
+
+.btnColor10{
+	background-color: green;
+
+}
+
+.btnColor11{
+	background-color: darkviolet;
+
+}
+
+.btnColor12{
+	background-color: violet;
+
+}
+
+.btnColor13{
+	background-color: firebrick;
+
+}
+
+.btnColor14{
+	background-color: red;
+
+}
+
+.btnColor15{
+	background-color: deeppink;
+
+}
+
+.btnColor16{
+	background-color: fuchsia;
+
+}
+
+
+.btnColor17{
+	background-color: orange;
+
+}
+
+.btnColor18{
+	background-color: goldenrod;
+
+}
+
+
+.btnColor19{
+	background-color: olive;
+
+}
+
+.btnColor20{
+	background-color: saddlebrown;
+
+}
+
+.btnColor21{
+	background-color: slategray;
+
+}
+
+.btnColor22{
+	background-color: springgreen;
+}
+
+
+
+.btnColor23{
+	background-color: greenyellow;
+}
+
+.btnColor24{
+	background-color: yellow;
 }

@@ -1,4 +1,5 @@
 Meteor.subscribe('pointsCollection')
+Meteor.subscribe('canvasCollection')
 
 var canvas;
 
@@ -8,48 +9,50 @@ var strokeWidth = 1;
 var thickness   =1;
 var strokeColor = "black";
 var radius=1;
+var height=1;
 var shape = 1;
-var canvasCreated = 0;
 
-
-  Template.wall.onCreated(function() {
-	Session.set('title',  'public');
-	console.log("Title has been set to " + Session.get('title'));
-	
-    if (!canvas) {	
- 	 canvas = new Canvas(); 
-	}	
-
-  this.autorun( function() {
-
-	var title = Session.get('title');
-    var data  = points.find({}).fetch({"title":title});
-
-    if (canvas) {
-      canvas.draw(data, shape);
-    }
-  });
-});
- 
-
-  Template.wall.onRendered(function() {
+Template.wall.onRendered( function() {
 	console.log("Wall rendered");
- 	
+
+    if (!canvas) {	
+		console.log("Creating fresh canvas");
+		canvas = new Canvas(); 
+	} else {
+		console.log("Found canvas");
+	}
+
+	canvas.clear();		
+	
+	Deps.autorun( function() {
+		var title = Session.get('title');
+		var data    = points.find( {"t":title} ).fetch();
+		
+		if (canvas) {
+		  canvas.draw(data, shape);
+		}
+	});
 	
 	if (!this.$('#slideThickness').data('uiSlideThickness')) {
 		$("#slideThickness").slider({ 
             min: 1,
-            max: 25
+            max: 10
         });
 	}
 	
 	if (!this.$('#slideRadius').data('uiSlideRadius')) {
 		$("#slideRadius").slider({ 
             min: 1,
-            max: 25
+            max: 50
         });
 	}
 	
+	if (!this.$('#slideHeight').data('uiSlideHeight')) {
+		$("#slideHeight").slider({ 
+            min: 1,
+            max: 50
+        });
+	}	
 		
 	if (!this.$('#slideThickness').data('uiSlideThickness')) {
         $("#slideThickness").slider({
@@ -67,113 +70,109 @@ var canvasCreated = 0;
 		 });
     }		
 	
-  }); 
+	if (!this.$('#slideHeight').data('uiSlideHeight')) {
+        $("#slideHeight").slider({
+			change: function() {
+				height = $(this).slider('value');
+			}
+		 });
+    }		
+	
+  }); // end of onRendered
   
 Template.wall.events({
-  'submit .js-submit-form':function(event){
+  'submit .js-brushes-form':function(event){
 		// stop the form from triggering a page reload
 		event.preventDefault();
-
+		
 		shape = event.target.rbShape.value;	
-		var action    = event.target.rbTitle.value;	
-		var oldTitle  = Session.get('title');
-		var newTitle  = event.target.title.value;		
-
-		if (oldTitle != newTitle) {	
-			if (!Meteor.user()) {
-				alert("Please log in, only public canvas is available to anonymous users!");
-			} else {	
-				Session.set('title',  event.target.title.value);
-				console.log("Title has been set to " + Session.get('title'));
-
-				if (action == "reload") {
-					  canvas.clear();
-					  	var title = Session.get('title');
-						var data  = points.find({"t":title}).fetch();
-							if (canvas) {
-							  canvas.draw(data, shape);
-							}
-					  console.log("Canvas Loaded " + Session.get('title'));
-				} else 				
-				if (action == "new") {
-					  canvas.clear();
-					  console.log("Canvas cleared " + Session.get('title'));
-				} else if (action == "clone") {
-						Meteor.call('cloneCanvas', {oldTitle, newTitle}  , function (error, result) {
-							if (error) alert('clearTitle Returned Error ' + error.error);
-						});
-						console.log("Canvas copied from " + oldTitle + " to " + Session.get('title'));
-				}	
-			}
-		}
-	},
+		console.log("Shape set to " + shape);
+  },
 	
   "click button.clear": function (event) {
-	var title = Session.get('title');
-  Meteor.call('clearTitle', { title: title }  , function (error, result) {
-			if (error) alert('clearTitle Returned Error ' + error.error);
-	});	
-    canvas.clear();
+	  	if (!Meteor.user()) {
+			alert("Please Log On");
+		} else {		
+			var title = Session.get('title');
+			Meteor.call('clearTitle', { title: title }  , function (error, result) {
+				if (error) alert('clearTitle Returned Error ' + error.error);
+			});	
+			canvas.clear();
+		}
   },
   
-    "click button.delete": function (event) {
-	Meteor.call('clearAll', {title:"ALL"}  , function (error, result) {
-			if (error) alert('clearTitle Returned Error ' + error.error);
-	});
-      canvas.clear();
-
-  },
-
-  "click button.btnColor01": function () {
+   "click button.btnColor01": function () {
     lastX=0; lastY=0; strokeColor = "black";
   },
-  "click button.btnColor02": function () {
-    lastX=0; lastY=0; strokeColor = "blue";
-  },
+   "click button.btnColor02": function () {
+    lastX=0; lastY=0; strokeColor = "darkblue";
+  }, 
   "click button.btnColor03": function () {
-    lastX=0; lastY=0; strokeColor = "cyan";
+    lastX=0; lastY=0; strokeColor = "darslateblue";
   },  
   "click button.btnColor04": function () {
-    lastX=0; lastY=0; strokeColor = "darkgreen";
-  }, 
-  "click button.btnColor05": function () {
-    lastX=0; lastY=0; strokeColor = "green";
-  },  
-  "click button.btnColor06": function () {
-    lastX=0; lastY=0; strokeColor = "fuchsia";
+    lastX=0; lastY=0; strokeColor = "blue";
   },
-  "click button.btnColor07": function () {
-    lastX=0; lastY=0; strokeColor = "violet";
-  },  
+   "click button.btnColor05": function () {
+    lastX=0; lastY=0; strokeColor = "powderblue";
+  },
+    "click button.btnColor06": function () {
+    lastX=0; lastY=0; strokeColor = "cadetblue";
+  },
+   "click button.btnColor17": function () {
+    lastX=0; lastY=0; strokeColor = "teal";
+  }, 
   "click button.btnColor08": function () {
-    lastX=0; lastY=0; strokeColor = "firebrick";
+    lastX=0; lastY=0; strokeColor = "cyan";
   },  
   "click button.btnColor09": function () {
-    lastX=0; lastY=0; strokeColor = "red";
-  },  
+    lastX=0; lastY=0; strokeColor = "darkgreen";
+  }, 
   "click button.btnColor10": function () {
-    lastX=0; lastY=0; strokeColor = "orange";
+    lastX=0; lastY=0; strokeColor = "green";
   },  
-  "click button.btnColor11": function () {
-    lastX=0; lastY=0; strokeColor = "goldenrod";
+   "click button.btnColor11": function () {
+    lastX=0; lastY=0; strokeColor = "darkviolet";
   },  
   "click button.btnColor12": function () {
-    lastX=0; lastY=0; strokeColor = "deeppink";
+    lastX=0; lastY=0; strokeColor = "violet";
   },  
   "click button.btnColor13": function () {
-    lastX=0; lastY=0; strokeColor = "olive";
+    lastX=0; lastY=0; strokeColor = "firebrick";
   },  
   "click button.btnColor14": function () {
-    lastX=0; lastY=0; strokeColor = "saddlebrown";
+    lastX=0; lastY=0; strokeColor = "red";
   },  
   "click button.btnColor15": function () {
-    lastX=0; lastY=0; strokeColor = "slategrey";
+    lastX=0; lastY=0; strokeColor = "deeppink";
   },  
-  "click button.btnColor16": function () {
-    lastX=0; lastY=0; strokeColor = "teal";
+    "click button.btnColor16": function () {
+    lastX=0; lastY=0; strokeColor = "fuchsia";
   },  
   "click button.btnColor17": function () {
-    lastX=0; lastY=0; strokeColor = "white";
+    lastX=0; lastY=0; strokeColor = "orange";
+  },  
+  "click button.btnColor18": function () {
+    lastX=0; lastY=0; strokeColor = "goldenrod";
+  },  
+ "click button.btnColor19": function () {
+    lastX=0; lastY=0; strokeColor = "olive";
+  },  
+  "click button.btnColor20": function () {
+    lastX=0; lastY=0; strokeColor = "saddlebrown";
+  },  
+  "click button.btnColor21": function () {
+    lastX=0; lastY=0; strokeColor = "slategrey";
+  }, 	
+  "click button.btnColor22": function () {
+    lastX=0; lastY=0; strokeColor = "springgreen";
+  },  
+  
+    "click button.btnColor23": function () {
+    lastX=0; lastY=0; strokeColor = "greenyellow";
+  }, 
+    "click button.btnColor24": function () {
+    lastX=0; lastY=0; strokeColor = "yellow";
   },  
 
 });  
@@ -192,6 +191,7 @@ var markPoint = function() {
 	y1: lastY,
 	w: thickness,
 	r: radius,
+	h: height,
 	c: strokeColor,
 	s: shape,
 	t: Session.get('title')
@@ -201,17 +201,6 @@ var markPoint = function() {
 	lastY = (event.pageY - offset.top);
 }
 
- Template.header.helpers({
-    doctitle:function(){
-      return Session.get("title");
-  }
-  })
-  
-  Template.wall.helpers({
-    doctitle:function(){
-      return Session.get("title");
-  }
-  })
 
 Template.canvas.events({
   'click': function (event) {
@@ -232,4 +221,14 @@ Template.canvas.events({
       markPoint();
     }
   }
+});
+
+  
+  Template.wall.helpers({
+    doctitle:function(){
+      return Session.get("title");
+    },
+	canvasSVGs:function(){
+		return canvasSVGs.find({});
+	}	
 });

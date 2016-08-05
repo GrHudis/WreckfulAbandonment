@@ -24,6 +24,12 @@ Meteor.publish('imagesCollection', function () {
     		description:"Bride for rail trail over Peckman River", 
     		location: "Cedar Grove, New Jersey"
     	});	
+    	 WAImages.insert({
+			name:"Mununkachunk.jpg",   
+    		category:"Railroad", 
+    		description:"Tunnel on Lackawanna Old Main Line", 
+    		location: "Belvidere, New Jersey"
+    	});			
    	  WAImages.insert({
 			name:"MorrisCanalMontclair.jpg",   
     		category:"Canal", 
@@ -42,6 +48,24 @@ Meteor.publish('imagesCollection', function () {
     		description:"Washed out bridge", 
     		location: "Hammonton, New Jersey"
     	});
+   	  WAImages.insert({
+			name:"Radar.jpg",   
+    		category:"Grafitti", 
+    		description:"Drain pipe into Delaware River under Norfolk & Southern Track", 
+    		location: "Phillipsburg, New Jersey"
+    	});	
+   	  WAImages.insert({
+			name:"LHRBridge.jpg",   
+    		category:"Railroad", 
+    		description:"Abandoned Lehigh to Hudson River Bridge over the Delaware River", 
+    		location: "Phillipsburg, New Jersey"
+    	});				
+   	  WAImages.insert({
+			name:"PineBarrensTrestle.jpg",   
+    		category:"Railroad", 
+    		description:"Trestle bridge", 
+    		location: "Hammonton, New Jersey"
+    	});		
  	  WAImages.insert({
 			name:"CNJChester.jpg",   
     		category:"Railroad", 
@@ -63,7 +87,7 @@ Meteor.publish('imagesCollection', function () {
  	  WAImages.insert({
 			name:"AndoverArt.jpg",   
     		category:"Graffiti", 
-    		description:"Suusex Brancg Rail Trail", 
+    		description:"Sussex Branch Rail Trail", 
     		location: "Andover, New Jersey"
     	});	
  	  WAImages.insert({
@@ -92,7 +116,7 @@ Meteor.publish('imagesCollection', function () {
     	});	
  	  WAImages.insert({
 			name:"Vernon.jpg",   
-    		category:"Railraod", 
+    		category:"Railroad", 
     		description:"Active New York Susquehanna and Western",
     		location: "Vernon, New Jersey"
     	});		
