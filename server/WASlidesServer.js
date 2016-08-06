@@ -119,6 +119,12 @@ Meteor.publish('imagesCollection', function () {
     		category:"Railroad", 
     		description:"Active New York Susquehanna and Western",
     		location: "Vernon, New Jersey"
+    	});	
+ 	  WAImages.insert({
+			name:"GhostTrain.jpg",   
+    		category:"Graffiti", 
+    		description:"Abandoned Central Railroad of NJ",
+    		location: "Bloomsbury, New Jersey"
     	});		
 		
 		return;

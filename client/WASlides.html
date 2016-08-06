@@ -4,15 +4,12 @@
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
 	  <div class="carousel-inner" roll="listbox">
-			<div class="item active">
-				<img src="GhostTrain.jpg" alt="Abandoned Central Railroad of NJ">
-				<div class="carousel-caption">
-					<h3 class="imcat">Graffiti</h3>
-					<p class="imcat">Ghost Train, Bloomsbury, New Jersey</p>
-				</div>
-			</div>
 			{{#each images}}
-			{{> slide}}
+				{{#if isFirst}}
+					{{> slide1}}
+				{{else}}
+					{{> slide}}
+				{{/if}}
 			{{/each}}
 	  </div>
 	  
@@ -29,6 +26,16 @@
 </div>
  </template>
  
+ 
+  <template name="slide1">
+	<div class="item active">
+		<img src="{{name}}" alt="{{description}}">
+		<div class="carousel-caption">
+			<h3 class="imcat">{{category}}</h3>
+			<p class="imcat">{{description}}, {{location}}</p>
+		</div>
+	</div>
+</template>
   
  <template name="slide">
 	<div class="item">

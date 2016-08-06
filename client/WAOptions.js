@@ -16,6 +16,33 @@ function setDelBtn() {
 Template.options_form.onRendered( function() { 
 	console.log("options_form rendered");
 	setDelBtn();
+	
+	
+	if (!this.$('#slideSpeed').data('uiSlideSpeed')) {
+		var speed = Session.get('speed');
+		if (!speed) {
+			var speed = 1000;
+			Session.set('speed', speed);
+			console.log("Slideshow speed default set"); 
+		}
+		$("#slideSpeed").slider({ 
+            min: 500,
+            max: 1500,
+		    value: speed
+        });	
+    }		
+		
+	
+	if (!this.$('#slideSpeed').data('uiSlideSpeed')) {
+        $("#slideSpeed").slider({
+			change: function() {
+				var speed = $(this).slider('value');
+				Session.set('speed', speed);
+			}
+		 });
+    }			
+		
+	
 });
 
 Template.options_form.events({
